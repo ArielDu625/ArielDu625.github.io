@@ -7,13 +7,20 @@
   
   <title>Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
+  <meta name="description" content="CRF相关笔记内容涉及CRF的基本介绍，CRF与HMM的区别，已经用于命名实体识的(NER)的LSTM-CRF模型。 ##预备知识 ###概率图模型概率图模型是指用无向图$G(V,E)$表示的概率分布。图中的每个点$v$表示一个随机变量，点之间的边$e$表示随机变量之间的概率依赖关系，整个图则表示这一组随机变量的联合概率分布$P(Y)$。  上图中7个点构成一组随机变量，有直连边的两个随机变量相">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta property="og:url" content="http://yoursite.com/2018/08/25/CRF-introduction/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="CRF相关笔记内容涉及CRF的基本介绍，CRF与HMM的区别，已经用于命名实体识的(NER)的LSTM-CRF模型。 ##预备知识 ###概率图模型概率图模型是指用无向图$G(V,E)$表示的概率分布。图中的每个点$v$表示一个随机变量，点之间的边$e$表示随机变量之间的概率依赖关系，整个图则表示这一组随机变量的联合概率分布$P(Y)$。  上图中7个点构成一组随机变量，有直连边的两个随机变量相">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/2018/08/25/CRF-introduction/materials/undirected_graph.png">
+<meta property="og:image" content="http://yoursite.com/2018/08/25/CRF-introduction/materials/chain_crf.png">
+<meta property="og:updated_time" content="2018-08-25T10:39:39.845Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo">
+<meta name="twitter:description" content="CRF相关笔记内容涉及CRF的基本介绍，CRF与HMM的区别，已经用于命名实体识的(NER)的LSTM-CRF模型。 ##预备知识 ###概率图模型概率图模型是指用无向图$G(V,E)$表示的概率分布。图中的每个点$v$表示一个随机变量，点之间的边$e$表示随机变量之间的概率依赖关系，整个图则表示这一组随机变量的联合概率分布$P(Y)$。  上图中7个点构成一组随机变量，有直连边的两个随机变量相">
+<meta name="twitter:image" content="http://yoursite.com/2018/08/25/CRF-introduction/materials/undirected_graph.png">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -60,9 +67,7 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-CRF-introduction" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-CRF-introduction" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/08/25/CRF-introduction/" class="article-date">
   <time datetime="2018-08-25T04:10:59.527Z" itemprop="datePublished">2018-08-25</time>
@@ -125,56 +130,19 @@
     </footer>
   </div>
   
-</article>
-
-
+    
+<nav id="article-nav">
   
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/08/24/hello-world/" class="article-date">
-  <time datetime="2018-08-24T12:03:51.939Z" itemprop="datePublished">2018-08-24</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/08/24/hello-world/">Hello World</a>
-    </h1>
+    <a href="/2018/08/24/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Hello World</div>
+    </a>
   
+</nav>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/24/hello-world/" data-id="cjl8v9tp50000vsu10kv4dsms" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
   
 </article>
-
-
-  
-
 
 </section>
         
