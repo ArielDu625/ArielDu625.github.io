@@ -89,7 +89,7 @@
     </div>
     
         <div id="toc" class="toc-article">
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#title-CRF相关笔记"><span class="toc-text">title: CRF相关笔记</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#预备知识"><span class="toc-text">预备知识</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#概率图模型"><span class="toc-text">概率图模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#概率无向图模型"><span class="toc-text">概率无向图模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#图的团和最大团"><span class="toc-text">图的团和最大团</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#概率无向图模型的因子分解"><span class="toc-text">概率无向图模型的因子分解</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CRF介绍"><span class="toc-text">CRF介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#线性链CRF与HMM模型的区别"><span class="toc-text">线性链CRF与HMM模型的区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CRF分词过程"><span class="toc-text">CRF分词过程</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#title-CRF相关笔记"><span class="toc-text">title:CRF相关笔记</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#预备知识"><span class="toc-text">预备知识</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#概率图模型"><span class="toc-text">概率图模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#概率无向图模型"><span class="toc-text">概率无向图模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#图的团和最大团"><span class="toc-text">图的团和最大团</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#概率无向图模型的因子分解"><span class="toc-text">概率无向图模型的因子分解</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CRF介绍"><span class="toc-text">CRF介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#线性链CRF与HMM模型的区别"><span class="toc-text">线性链CRF与HMM模型的区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CRF分词过程"><span class="toc-text">CRF分词过程</span></a></li></ol>
 </div>
     
 </div>
@@ -132,7 +132,7 @@
     </div>
     <div class="post-content ">
         <hr>
-<h2 id="title-CRF相关笔记"><a href="#title-CRF相关笔记" class="headerlink" title="title: CRF相关笔记"></a>title: CRF相关笔记</h2><p>内容涉及CRF的基本介绍，CRF与HMM的区别，已经用于命名实体识的(NER)的LSTM-CRF模型。</p>
+<h2 id="title-CRF相关笔记"><a href="#title-CRF相关笔记" class="headerlink" title="title:CRF相关笔记"></a>title:CRF相关笔记</h2><p>内容涉及CRF的基本介绍，CRF与HMM的区别，已经用于命名实体识的(NER)的LSTM-CRF模型。</p>
 <h2 id="预备知识"><a href="#预备知识" class="headerlink" title="预备知识"></a>预备知识</h2><h3 id="概率图模型"><a href="#概率图模型" class="headerlink" title="概率图模型"></a>概率图模型</h3><p>概率图模型是指用无向图$G(V,E)$表示的概率分布。图中的每个点$v$表示一个随机变量，点之间的边$e$表示随机变量之间的概率依赖关系，整个图则表示这一组随机变量的联合概率分布$P(Y)$。</p>
 <p><img src="materials\undirected_graph.png" alt=""></p>
 <p>上图中7个点构成一组随机变量，有直连边的两个随机变量相互依赖。</p>
