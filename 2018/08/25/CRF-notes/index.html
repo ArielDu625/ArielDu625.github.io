@@ -152,21 +152,21 @@
 <li>成对马尔可夫性</li>
 </ul>
 <p>没有直连边的两个随机变量是条件独立的。例如上图中，点1和点5对应的随机变量$Y_1$和$Y_5$之间没有直连边，则它们是条件独立的，用公式表示就是</p>
-<script type="math/tex; mode=display">P(Y\_1,Y\_5|Y\_o)=P(Y\_1|Y\_o)P(Y\_5|Y\_o)</script><p>其中$Y_o$表示除了点1和点5，其他点对应的随机变量组</p>
+<script type="math/tex; mode=display">P(Y_1,Y_5|Y_o)=P(Y_1|Y_o)P(Y_5|Y_o)</script><p>其中$Y_o$表示除了点1和点5，其他点对应的随机变量组</p>
 <ul>
 <li>局部马尔可夫性</li>
 </ul>
 <p>局部马尔可夫性将形式扩展到随机变量与随机变量组之间的关系，与某个随机变量没有直连边的随机变量组与该随机变量是条件独立的。例如上图中，在给定随机变量组$Y_w$的条件下随机变量$Y_3$与随机变量$Y_o$是条件独立的，其中$Y_w$是与点3有直连边的点对应的随机变量组，即$(Y_2,Y_4)$，$Y_o$是其他的点对应的随机变量组，即$(Y_1,Y_5,Y_6,Y_7)$，用公式表示就是</p>
-<script type="math/tex; mode=display">P(Y\_3,Y\_o|Y\_w)=P(Y\_3|Y\_w)P(Y\_o|Y\_w)</script><ul>
+<script type="math/tex; mode=display">P(Y_3,Y_o|Y_w)=P(Y_3|Y_w)P(Y_o|Y_w)</script><ul>
 <li>全局马尔可夫性</li>
 </ul>
 <p>全局马尔可夫性将性质扩展到随机变量组之间的关系，即两个没有直连边的随机变量组之间也是条件独立的。例如在上图中，结点结合$A=(1,6)$，结点集合$B=(5,7)$，这两个集合中的点不存在直连边，则它们对应的随机变量组是条件独立的：</p>
-<script type="math/tex; mode=display">P(Y\_A,Y\_B|Y\_C)=P(Y\_A|Y\_C)P(Y\_B|Y\_C)</script><p>其中$Y_C$是除了集合$A$和集合$B$中的结点外其他结点对应的随机变量组，在本例中，$C=(2,3,4)$</p>
+<script type="math/tex; mode=display">P(Y_A,Y_B|Y_C)=P(Y_A|Y_C)P(Y_B|Y_C)</script><p>其中$Y_C$是除了集合$A$和集合$B$中的结点外其他结点对应的随机变量组，在本例中，$C=(2,3,4)$</p>
 <p>以上三种性质是等价的，因此只要联合概率分布P(Y)满足一个性质，就是概率无向图模型，即马尔可夫随机场。</p>
 <h3 id="图的团和最大团"><a href="#图的团和最大团" class="headerlink" title="图的团和最大团"></a>图的团和最大团</h3><p>在无向图$G$中，任何两个结点均有边连接的结点子集称为团(clique)。如果$C$是无向图$G$的一个团，并且不能再加进任何一个$G$的结点使其称为一个更大的团，则称此$C$为最大团(maximal clique)</p>
 <h3 id="概率无向图模型的因子分解"><a href="#概率无向图模型的因子分解" class="headerlink" title="概率无向图模型的因子分解"></a>概率无向图模型的因子分解</h3><p>概率无向图模型的联合概率分布$P(Y)$可以表示为图中所有最大团上的函数的乘积形式，这个过程称为概率无向图模型的因子分解(factorization)</p>
-<script type="math/tex; mode=display">P(Y)=\frac 1 Z \prod\_C f\_C(Y\_C)</script><p>其中，$Z$是规范化因子</p>
-<script type="math/tex; mode=display">Z=\sum\_Y \prod\_C f\_C(Y\_C)</script><h2 id="CRF介绍"><a href="#CRF介绍" class="headerlink" title="CRF介绍"></a>CRF介绍</h2><p>条件随机场(CRF)是给定一组输入随机变量O条件下，另一组输出随机变量S的条件概率分布模型，其特点是假设输出随机变量S构成马尔可夫随机场。为了和隐式马尔可夫模型(HMM)对比，可以认为输入随机变量O即观测状态，输出随机变量S即隐藏状态（在用水藻状态预测天气例子中，水藻状态即观测状态，天气状态即隐藏状态）。</p>
+<script type="math/tex; mode=display">P(Y)=\frac 1 Z \prod_C f_C(Y_C)</script><p>其中，$Z$是规范化因子</p>
+<script type="math/tex; mode=display">Z=\sum_Y \prod_C f_C(Y_C)</script><h2 id="CRF介绍"><a href="#CRF介绍" class="headerlink" title="CRF介绍"></a>CRF介绍</h2><p>条件随机场(CRF)是给定一组输入随机变量O条件下，另一组输出随机变量S的条件概率分布模型，其特点是假设输出随机变量S构成马尔可夫随机场。为了和隐式马尔可夫模型(HMM)对比，可以认为输入随机变量O即观测状态，输出随机变量S即隐藏状态（在用水藻状态预测天气例子中，水藻状态即观测状态，天气状态即隐藏状态）。</p>
 <p>线性链条件随机场一般用于序列标注问题，我们以下讨论的均为线性链条件随机场的使用。<br><img src="/images/chain_crf.png" alt=""></p>
 <p>在标注序列中，$O$表示输入观测状态序列，$S$表示对应的输出隐藏状态序列（即标注序列）。从图中我们可以看出，线性链条件随机场中，最大团是每两个相邻的结点。故其联合概率分布可以表示成相邻两个结点上的函数。<br><img src="/images/p_yx.jpg" alt=""></p>
 <p>其中</p>
