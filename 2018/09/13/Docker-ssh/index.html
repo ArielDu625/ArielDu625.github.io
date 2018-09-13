@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Ariel的博客">
+    <meta name="keyword"  content="notes">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        Docker ssh - Ariel的博客 | Ariel&#39;s Blog
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body>
+
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> make each day your masterpiece </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar">
+            <img src="/img/cat.jpg" />
+        </div>
+        <div class="name">
+            <i>Ariel Du</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archives">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>搜索</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+        <div class="index-about-mobile">
+            <i> make each day your masterpiece </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        Docker ssh
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2018-09-13 15:40:30</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/tags/#Docker" title="Docker">Docker</a>
+        <span>/</span>
+        
+        <a class="tag" href="/tags/#工具" title="工具">工具</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content ">
+        <p>一般Docker镜像是不带ssh服务的，虽然可以使用attach、exec等命令进入容器，但是这些方法无法解决远程管理容器的问题。当我们需要远程登录到容器进行一些操作的时候，就需要ssh服务。</p>
+<p>下面介绍基于Dockerfile的方法创建支持ssh服务的Ubuntu镜像。</p>
+<ol>
+<li><p>首先创建一个sshd_ubuntu工作目录，进入目录，并创建Dockerfile文件和run.sh文件。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ mkdir sshd_ubuntu</span><br><span class="line">$ <span class="built_in">cd</span> sshd_ubuntu</span><br><span class="line">$ touch Dockerfile run.sh</span><br><span class="line">$ ls</span><br><span class="line">Dockerfile run.sh</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>编辑run.sh文件，内容如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line">/usr/sbin/sshd -D</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>将宿主主机上的ssh密钥对拷贝至当前文件夹下的authorized_keys文件（如果没有ssh密钥可以通过ssh-keygen -t rsa命令生成，默认生成路径是~/.ssh/id_rsa.pub）。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cat ~/.ssh/id_rsa.pub &gt; authorized_keys</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>现在sshd_ubuntu目录下有三个文件：Dockerfile，run.sh和authorizd_keys。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ ls</span><br><span class="line">authorized_keys Dockerfile run.sh</span><br></pre></td></tr></table></figure></p>
+<ol>
+<li><p>编写Dockerfile。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#设置继承镜像</span></span><br><span class="line">FROM ubuntu:<span class="number">14.04</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#提供作者信息</span></span><br><span class="line">MAINTAINER Ariel <span class="string">"arieldu@qq.com"</span></span><br><span class="line"></span><br><span class="line">RUN apt-get update</span><br><span class="line"><span class="comment">#安装ssh服务</span></span><br><span class="line">RUN apt-get install -y openssh-server</span><br><span class="line">RUN mkdir -p /var/run/sshd</span><br><span class="line">RUN mkdir -p /root/.ssh</span><br><span class="line"></span><br><span class="line"><span class="comment">#设置root账户登录密码</span></span><br><span class="line">RUN echo <span class="string">'root:root'</span> | chpasswd</span><br><span class="line"><span class="comment">#登录设置</span></span><br><span class="line">RUN sed -ri <span class="string">'s/^PermitRootLogin\s+.*/PermitRootLogin yes/'</span> /etc/ssh/sshd_config</span><br><span class="line">RUN sed -ri <span class="string">'s/UsePAM yes/#UsePAM yes/g'</span> /etc/ssh/sshd_config</span><br><span class="line"></span><br><span class="line"><span class="comment">#复制配置文件到相应位置，并赋予脚本可执行权限</span></span><br><span class="line">ADD authorized_keys /root/.ssh/authorized_keys</span><br><span class="line">ADD run.sh /run.sh</span><br><span class="line">RUN chmod <span class="number">755</span> /run.sh</span><br><span class="line"></span><br><span class="line"><span class="comment">#开放端口</span></span><br><span class="line">EXPOSE <span class="number">22</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#设置自启动命令</span></span><br><span class="line">CMD [<span class="string">"/run.sh"</span>]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>生成镜像。在sshd_ubuntu工作目录下，使用docker build命令来创建镜像。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> sshd_ubuntu</span><br><span class="line">$ sudo docker build -t sshd:ubuntu .</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>注意，docker build命令最后有一个.，表示当前目录。命令执行完后，如果看见“Successfully build xxx”字样，则说明镜像创建成功。在使用docker images命令来查看本地存在的镜像。</p>
+<ol>
+<li>测试镜像，运行容器。使用刚刚创建的sshd:ubuntu镜像来创建一个容器。启动容器，并将容器的22号端口映射到宿主主机的10022号端口。<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo docker run -d -p 10022:22 sshd:ubuntu</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>然后在宿主主机上再开一个终端，连接到新建的容器：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh root@172.16.36.34 -p 10022</span><br></pre></td></tr></table></figure></p>
+<p>将上面的ip地址改成你自己宿主主机的ip地址。然后根据提示输入yes，然后提示输入密码的时候，输入密码root。</p>
+
+        
+        <div id="comment-container">
+        </div>
+    </div>
+</div>
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+
+        
+
+        
+
+        
+
+    </ul>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+</html>
