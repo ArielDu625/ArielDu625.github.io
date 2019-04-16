@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Ariel的博客">
+    <meta name="keyword"  content="notes">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        Ariel的博客 | Ariel&#39;s Blog
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body>
+
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> make each day your masterpiece </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar">
+            <img src="/img/cat.jpg" />
+        </div>
+        <div class="name">
+            <i>Ariel Du</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archives">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>搜索</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Kubernetes简介及其应用"><span class="toc-text">Kubernetes简介及其应用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Dockerfile常用命令"><span class="toc-text">Dockerfile常用命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#创建资源"><span class="toc-text">创建资源</span></a></li></ol></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+        <div class="index-about-mobile">
+            <i> make each day your masterpiece </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2019-04-16 17:22:31</span></span>
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content ">
+        <h3 id="Kubernetes简介及其应用"><a href="#Kubernetes简介及其应用" class="headerlink" title="Kubernetes简介及其应用"></a>Kubernetes简介及其应用</h3><p>@(工具使用)[kubernetes, docker]</p>
+<h4 id="Dockerfile常用命令"><a href="#Dockerfile常用命令" class="headerlink" title="Dockerfile常用命令"></a>Dockerfile常用命令</h4><ul>
+<li><p><strong>FROM</strong> ：指定基础镜像。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FROM &lt;image&gt; 或 FROM &lt;image&gt;:&lt;tag&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>MAINTAINER</strong>: 指明维护者信息。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- MAINTAINER &lt;name&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>RUN</strong>: 执行跟随的命令。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">RUN &lt;<span class="built_in">command</span>&gt; <span class="comment">#在shell终端运行命令</span></span><br><span class="line">RUN [<span class="string">"executable"</span>, <span class="string">"param1"</span>, <span class="string">"param2"</span>] <span class="comment">#使用Exec格式，可以指定其他终端执行</span></span><br><span class="line"><span class="comment">#例如 RUN ["/bin/bash", "-c", "echo hello"]</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>EXPOSE</strong>:  暴露容器的端口号。可以在启动容器时通过-p 指定本地端口和容器端口的映射。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">EXPOSE &lt;port&gt; [&lt;port&gt;...]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>WORKDIR</strong>： 配置工作目录，后续的RUN、CMD、ENTRYPOINT将工作在该命令指定的目录下。可以使用多个WORKDIR指令，后续命令如果参数是相对路径，则会基于之前命令指定的路径。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">WORKDIR /path/to/workdir</span><br><span class="line"><span class="comment">#例如</span></span><br><span class="line">WORKDIR /a</span><br><span class="line">WORKDIR b</span><br><span class="line">RUN <span class="built_in">pwd</span></span><br><span class="line"><span class="comment">#此时最终的路径是/a/b</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>VOLUME</strong>: 创建一个可以从本地主机或其他容器挂载的挂载点，一般用来存放数据库和需要保持的数据等。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">VOLUME [<span class="string">"/data"</span>]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>ENV</strong>:  指定环境变量，该环境变量会被后续RUN指令使用，并在容器运行时保持。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- ENV &lt;key&gt; &lt;value&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>ADD</strong>：复制指定的<strong>src</strong>到容器中的<strong>dest</strong>。<strong>src</strong>可以是Dockerfile所在目录的一个相对路径（文件或目录），也可以是一个URL，还可以是一个tar文件（自动解压为目录）。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ADD &lt;src&gt; &lt;dest&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>COPY</strong>:  复制本地主机的<strong>src</strong>为容器中的<strong>dest</strong>，<strong>src</strong>为Dockerfile所在目录的相对路径，文件或者目录，当目标路径<strong>dest</strong>不存在时，会自动创建。<strong>COPY是ADD指令的简化版，当需求是复制文件或目录到容器中时，推荐使用COPY指令。</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">COPY &lt;src&gt; &lt;dest&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<blockquote>
+<p><strong>ADD和COPY的区别</strong>：ADD指令的功能比COPY功能复杂。ADD指令中，src可以是URL，此时将根据URL进行下载，下载的文件放在dest目录；src还可以是tar文件，此时将自动解压到dest目录。但是下载和解压功能不可同时生效。而COPY只是复制功能。</p>
+</blockquote>
+<ul>
+<li><p><strong>CMD</strong>:  指定启动容器时执行的命令，每个Dockerfile只能有一条CMD命令，如果指定了多条CMD命令，只有最后一条会被执行。另外，如果用户启动容器时指定了运行的命令（docker run），则CMD指定的命令会被覆盖掉。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">CMD [<span class="string">"executable"</span>, <span class="string">"params1"</span>, <span class="string">"param2"</span>]</span><br><span class="line">CMD <span class="built_in">command</span> param1 param2 <span class="comment">#在/bin/sh中执行，提供给需要交互的应用</span></span><br><span class="line">CMD [<span class="string">"param1"</span>, <span class="string">"param2"</span>] <span class="comment">#为ENTRYPOINT提供默认参数，此时ENTRYPOINT必须使用Exec格式</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>ENTRYPOINT</strong>:  配置容器启动后执行的命令，并且不可被docker run提供的参数覆盖。每个Dockerfile中只能有一个ENTRYPOINT，当指定多个时，只有最后一个生效。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ENTRYPOINT [<span class="string">"executable"</span>, <span class="string">"param1"</span>, <span class="string">"param2"</span>]</span><br><span class="line">ENTRYPOINT <span class="built_in">command</span> param1 param2 <span class="comment">#由shell执行</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<blockquote>
+<p><strong>CMD 和ENTRYPOINT的区别</strong>：CMD 指定的命令可在启动容器时被覆盖，而ENTRYPOINT指定的命令则不会。ENTRYPOINT更加灵活，它的Exec格式和shell格式效果差别大。使用Exec格式时，可以通过与CMD一起使用，同时提供不可变和可变的参数；而shell格式会忽略任何CMD或docker run提供的参数。例如下面的Dockerfile片段：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;  ENTRYPOINT [<span class="string">"/bin/echo"</span>, <span class="string">"Hello"</span>]</span><br><span class="line">&gt;  CMD [<span class="string">"world"</span>]</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure></p>
+<p>当容器通过 docker run -it [image] 启动时，输出为 Hello world<br>当容器通过docker run -it [image] everyone 启动时，则输出为 Hello everyone</p>
+</blockquote>
+<h4 id="创建资源"><a href="#创建资源" class="headerlink" title="创建资源"></a>创建资源</h4><p>kubernetes支持两种方式创建资源：用kubectl命令直接创建、通过配置文件和kubectl apply命令创建。</p>
+<ol>
+<li><p>kubectl命令直接创建：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl run card-api-deployment --image=my-card-api:latest --replicas=2</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>通过配置文件和kubectl apply命令<br><img src="./1552563664553.png" alt="Alt text"><br><strong>apiVersion (No.1)</strong>：当前配置格式的版本<br><strong>kind (No.2)</strong>：要创建的资源类型，这里是Deployment<br><strong>metadata (No.3-4)</strong>：该资源的元数据，name是必需的元数据<br><strong>spec (No.5-14)</strong>：该Deployment的规格说明<br><strong>replicas (No.6)</strong>：指明副本数量，默认为1<br><strong>template (No.7-14)</strong>：定义Pod的模板，这是该配置文件的重要部分<br><strong>metadata (No.8-10)</strong>：定义Pod的元数据，至少要定义一个label，label的key和value可以任意指定。<br><strong>spec (No.11-14)</strong>：描述Pod的规格，此部分定义Pod的每一个容器的属性，name和image是必需的。</p>
+</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl apply -f /path/to/card_api_deployment.yaml</span><br></pre></td></tr></table></figure>
+        
+        <div id="comment-container">
+        </div>
+    </div>
+</div>
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+
+        
+
+        
+
+        
+
+    </ul>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+</html>
