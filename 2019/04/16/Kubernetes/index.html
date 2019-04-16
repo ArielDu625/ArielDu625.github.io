@@ -11,7 +11,7 @@
 
     <title>
         
-        Ariel的博客 | Ariel&#39;s Blog
+        Kubernetes简介及其应用 - Ariel的博客 | Ariel&#39;s Blog
         
     </title>
 
@@ -89,7 +89,7 @@
     </div>
     
         <div id="toc" class="toc-article">
-    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Kubernetes简介及其应用"><span class="toc-text">Kubernetes简介及其应用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Dockerfile常用命令"><span class="toc-text">Dockerfile常用命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#创建资源"><span class="toc-text">创建资源</span></a></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#Dockerfile常用命令"><span class="toc-text">Dockerfile常用命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#创建资源"><span class="toc-text">创建资源</span></a></li></ol>
 </div>
     
 </div>
@@ -119,11 +119,23 @@
 
 <div class="post-container">
     <div class="post-title">
-        
+        Kubernetes简介及其应用
     </div>
 
     <div class="post-meta">
-        <span class="attr">发布于：<span>2019-04-16 17:22:31</span></span>
+        <span class="attr">发布于：<span>2019-04-16 00:00:00</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/tags/#kubernetes" title="kubernetes">kubernetes</a>
+        <span>/</span>
+        
+        <a class="tag" href="/tags/#docker" title="docker">docker</a>
+        <span>/</span>
+        
+        <a class="tag" href="/tags/#工具使用" title="工具使用">工具使用</a>
+        <span>/</span>
+        
         
         </span>
         <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
@@ -131,8 +143,7 @@
 </span>
     </div>
     <div class="post-content ">
-        <h3 id="Kubernetes简介及其应用"><a href="#Kubernetes简介及其应用" class="headerlink" title="Kubernetes简介及其应用"></a>Kubernetes简介及其应用</h3><p>@(工具使用)[kubernetes, docker]</p>
-<h4 id="Dockerfile常用命令"><a href="#Dockerfile常用命令" class="headerlink" title="Dockerfile常用命令"></a>Dockerfile常用命令</h4><ul>
+        <h4 id="Dockerfile常用命令"><a href="#Dockerfile常用命令" class="headerlink" title="Dockerfile常用命令"></a>Dockerfile常用命令</h4><ul>
 <li><p><strong>FROM</strong> ：指定基础镜像。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FROM &lt;image&gt; 或 FROM &lt;image&gt;:&lt;tag&gt;</span><br></pre></td></tr></table></figure>
 </li>
@@ -181,7 +192,7 @@
 <li><p>kubectl命令直接创建：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl run card-api-deployment --image=my-card-api:latest --replicas=2</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>通过配置文件和kubectl apply命令<br><img src="./1552563664553.png" alt="Alt text"><br><strong>apiVersion (No.1)</strong>：当前配置格式的版本<br><strong>kind (No.2)</strong>：要创建的资源类型，这里是Deployment<br><strong>metadata (No.3-4)</strong>：该资源的元数据，name是必需的元数据<br><strong>spec (No.5-14)</strong>：该Deployment的规格说明<br><strong>replicas (No.6)</strong>：指明副本数量，默认为1<br><strong>template (No.7-14)</strong>：定义Pod的模板，这是该配置文件的重要部分<br><strong>metadata (No.8-10)</strong>：定义Pod的元数据，至少要定义一个label，label的key和value可以任意指定。<br><strong>spec (No.11-14)</strong>：描述Pod的规格，此部分定义Pod的每一个容器的属性，name和image是必需的。</p>
+<li><p>通过配置文件和kubectl apply命令<br><img src="/images/1552563664553.png" alt=""><br><strong>apiVersion (No.1)</strong>：当前配置格式的版本<br><strong>kind (No.2)</strong>：要创建的资源类型，这里是Deployment<br><strong>metadata (No.3-4)</strong>：该资源的元数据，name是必需的元数据<br><strong>spec (No.5-14)</strong>：该Deployment的规格说明<br><strong>replicas (No.6)</strong>：指明副本数量，默认为1<br><strong>template (No.7-14)</strong>：定义Pod的模板，这是该配置文件的重要部分<br><strong>metadata (No.8-10)</strong>：定义Pod的元数据，至少要定义一个label，label的key和value可以任意指定。<br><strong>spec (No.11-14)</strong>：描述Pod的规格，此部分定义Pod的每一个容器的属性，name和image是必需的。</p>
 </li>
 </ol>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl apply -f /path/to/card_api_deployment.yaml</span><br></pre></td></tr></table></figure>
